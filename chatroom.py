@@ -1,20 +1,28 @@
-class User:
-    def __init__(self, username):
-        self.username = username
-        self.chatroom = None
-
-class ChatRoom: 
-    def __init__(self, name):
-        self.name = name
+class ChatRoom:
+    def __init__(self):
         self.users = []
         self.messages = []
 
-class Message: 
-    message_count = 0
-    def __init__(self, sender, content):
-        self.sender = sender
+class User(ChatRoom):
+    def __init__(self, username):
+        self.username = username
+
+class Message(ChatRoom):
+    def __init__(self, content):
         self.content = content
-        self.id = Message.message_count
-        message_count += 1
+
+
+user1 = User("Satoru Gojo")
+user2 = User("Ryomen Sukuna")
+
+
+
+
+
+
+
+
+
+
 
 
