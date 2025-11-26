@@ -1,20 +1,22 @@
-class ChatRoom:
-    def __init__(self):
+class Chatroom:
+    def __init__(self, room_name):
+        self.room_name = room_name
         self.users = []
         self.messages = []
+    
+    def add_user(self, user):
+        self.users.append(user)
+    
+    def remove_user(self, user):
+        self.users.remove(user)
 
-class User(ChatRoom):
-    def __init__(self, username):
-        self.username = username
+class User:
+    def __init__(self, user_name):
+        self.user_name = user_name
+    
 
-class Message(ChatRoom):
-    def __init__(self, content):
-        self.content = content
-
-
+room = Chatroom("Jujutsu High Group Chat")
 user1 = User("Satoru Gojo")
-user2 = User("Ryomen Sukuna")
-
 
 
 
