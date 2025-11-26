@@ -15,8 +15,13 @@ class Chatroom:
     
     def broadcast_message(self, sender, message_contents):
         message = Message(sender, message_contents)
-        self.messages.append(message_contents)
+        self.messages.append(message)
         print(message)
+
+    def display_chat_history(self):
+        print(f"\nChat history of {self.room_name}: ")
+        for msg in self.messages:
+            print(msg)
 
 class Message:
     count = 0
@@ -27,7 +32,7 @@ class Message:
         Message.count += 1
     
     def __str__(self):
-        return f"{self.message_id}  {self.sender.user_name}:  {self.message_contents}"
+        return f"{self.sender.user_name}:  {self.message_contents}"
 
 class User:
     def __init__(self, user_name):
@@ -46,9 +51,9 @@ class User:
         if not self.chatroom:
             print(f"{self.user_name} is not the Chatroom")
         else:
-            chatroom.remove_user(self)
-            print(f"{self.user_name} has left the {chatroom.room_name}.")
-            chatroom = None 
+            self.chatroom.remove_user(self)
+            print(f"{self.user_name} has left the {self.chatroom.room_name}.")
+            self.chatroomchatroom = None 
 
     def send_message(self, message_content):
         if not self.chatroom:
@@ -57,19 +62,28 @@ class User:
             self.chatroom.broadcast_message(self, message_content)
 
 
-        
-room = Chatroom("Jujutsu High Group Chat")
-room.display_chatroom_name()
+if __name__ == "__main__":      
+    room = Chatroom("Jujutsu High Group Chat")
+    room.display_chatroom_name()
 
-user1 = User("Ryomen Sukuna")
-user2= User("Satoru Gojo")
+    user1 = User("Ryomen Sukuna")
+    user2= User("Satoru Gojo")
 
-user1.join_chatroom(room)
-user2.join_chatroom(room)
+    user1.join_chatroom(room)
+    user2.join_chatroom(room)
 
-user1.send_message("I feel bad taking on a handicap.")
-user2.send_message("Sukuna, I am not Satoru Gojo because I am the strongest. I am the strongest because I am Satoru Gojo.")
+    user1.send_message("I feel bad taking on a handicap.")
+    user2.send_message("Sukuna, I am not Satoru Gojo because I am the strongest. I am the strongest because I am Satoru Gojo.")
 
+    user3 = User("Itadori Yuji")
+
+    user3.join_chatroom(room)
+    user3.send_message("Gojo sensei!")
+
+    room.display_chat_history()
+
+    user1.leave_chatroom()
+    user2.leave_chatroom()
 
 
 
