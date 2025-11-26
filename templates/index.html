@@ -15,16 +15,13 @@
                 <h1 class = "text-lg font-semibold text-emerald-400">
                     {{ room_name }} 
                 </h1>
-                <p class = "text-xs text-slate-400">
-                    Group Chat
-                </p>
             </div>
             <span class="text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
                 Online: {{online_count}} users
             </span>
         </header>
 
-        <main class = "h-80 px-4 py-3 space-y-3 overflow-y-auto">
+        <main id="chat-window" class = "h-80 px-4 py-3 space-y-3 overflow-y-auto">
 
             <!--Chat Messages-->
             <!-- Dynamic messages from Chatroom -->
@@ -55,7 +52,7 @@
 
         <!--Message Input-->
         <footer class = "px-4 py-3 border-t border-slate-700 bg-slate-900/70">
-            <form class = "flex items-center gap-2" method = "POST" action = "/">
+            <form class="flex items-center gap-2" method="POST" action="/chat">
                 <input
                     type="text"
                     name = "message"
@@ -72,5 +69,13 @@
         </footer>
 
     </div>
+    <script>
+        // Scroll chat window to bottom on page load
+        window.onload = function() {
+            const chatWindow = document.getElementById("chat-window");
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+    </script>
+
 </body>
 </html>
