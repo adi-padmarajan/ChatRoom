@@ -6,6 +6,8 @@ app = Flask(__name__) #App Instance
 
 chatroom = Chatroom("Jujutsu High School")
 current_user = User("You")
+chatroom.add_user(current_user)
+
 
 #Route Decorator
 @app.route("/", methods = ["GET", "POST"])
@@ -23,7 +25,8 @@ def home():
     return render_template(
         "index.html", 
         messages = chatroom.messages,
-        room_name = chatroom.room_name
+        room_name = chatroom.room_name,
+        online_count=len(chatroom.users)
     )
 
 if __name__ == "__main__":
