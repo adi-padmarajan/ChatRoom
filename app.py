@@ -26,7 +26,8 @@ def home():
         "index.html", 
         messages = chatroom.messages,
         room_name = chatroom.room_name,
-        online_count=len(chatroom.users)
+        online_count=len(chatroom.users),
+        current_user_name = current_user.user_name
     )
 
 if __name__ == "__main__":
