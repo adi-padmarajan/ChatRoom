@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 # request is imported to read data sent from the browser
 
 from chatroom import Chatroom, User #import from chatroom.py
@@ -17,6 +17,18 @@ chatroom.add_user(sukuna)
 
 chatroom.broadcast_message(sukuna, "I feel bad taking on a handicap.")
 chatroom.broadcast_message(gojo, "I am still standing")
+
+
+#Root -> send people to the landing page
+@app.route("/")
+def root():
+    return redirect("/welcome")
+
+
+# Landing page
+@app.route("/welcome")
+def welcome():
+    return render_template("welcome.html")
 
 
 #Route Decorator
@@ -39,6 +51,15 @@ def home():
         online_count=len(chatroom.users),
         current_user_name = current_user.user_name
     )
+
+@app.route("/create")
+def create():
+    return "Create chatroom page coming soon"
+
+
+@app.route("/join")
+def join():
+    return "Join chatroom page coming soon"
 
 if __name__ == "__main__":
     app.run(debug = True, port = 5050)
