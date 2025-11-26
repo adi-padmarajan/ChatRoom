@@ -4,9 +4,19 @@ from flask import Flask, render_template, request
 from chatroom import Chatroom, User #import from chatroom.py
 app = Flask(__name__) #App Instance
 
+#Create Chatroom
 chatroom = Chatroom("Jujutsu High School")
+
 current_user = User("You")
+gojo = User("Satoru Gojo")
+sukuna = User("Ryomen Sukuna")
+
 chatroom.add_user(current_user)
+chatroom.add_user(gojo)
+chatroom.add_user(sukuna)
+
+chatroom.broadcast_message(sukuna, "I feel bad taking on a handicap.")
+chatroom.broadcast_message(gojo, "I am still standing")
 
 
 #Route Decorator
