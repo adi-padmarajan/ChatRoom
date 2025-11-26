@@ -1,22 +1,30 @@
 from flask import Flask, render_template, request
 # request is imported to read data sent from the browser
+
+from chatroom import Chatroom, User #import from chatroom.py
 app = Flask(__name__) #App Instance
 
-messages = []
+chatroom = Chatroom("Jujutsu High School")
+current_user = User("You")
 
 #Route Decorator
 @app.route("/", methods = ["GET", "POST"])
 def home():
     if request.method ==  "POST":
         # Get the message from the form input
-        message = request.form.get("message", "").strip()
+        message_text = request.form.get("message", "").strip()
 
-        if message: 
-            messages.append(message)
-            print("New message from form:", message)
+        if message_text: 
+            # Use existing OOP
+            chatroom.broadcast_message(current_user, message_text)
+            print("New message from form:", message_text)
 
     # Pass messages to the template
-    return render_template("index.html", messages = messages)
+    return render_template(
+        "index.html", 
+        messages = chatroom.messages,
+        room_name = chatroom.room_name
+    )
 
 if __name__ == "__main__":
     app.run(debug = True, port = 5050)

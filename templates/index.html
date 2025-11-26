@@ -13,7 +13,7 @@
         <header class = "px-4 py-3 border-b border-slate-700 flex items-center justify-between bg-slate-900/70">
             <div>
                 <h1 class = "text-lg font-semibold text-emerald-400">
-                    Jujutsu High 
+                    {{ room_name }} 
                 </h1>
                 <p class = "text-xs text-slate-400">
                     Group Chat
@@ -64,7 +64,7 @@
                         You <span class="text-[10px] text-slate-500">· just now</span>
                     </span>
                     <div class="inline-block max-w-[80%] mt-1 rounded-lg bg-sky-600 px-3 py-2 text-sm text-slate-50">
-                        {{ msg }}
+                        {{ msg.message_contents }}
                     </div>
                 </div>
             {% endfor %}
