@@ -1,0 +1,8 @@
+*.py linguist-detectable=true
+*.py linguist-language=Python
+
+# Ignore non-Python files from language stats
+*.html linguist-detectable=false
+*.css linguist-detectable=false
+*.js linguist-detectable=false
+*.md linguist-detectable=false
