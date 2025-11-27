@@ -1,6 +1,7 @@
 # ChatRoom
-A clean, full-stack, modern chat application built using Flask, Python OOP, HTML and Tailwind CSS.
+A clean, full-stack, modern chat application built using Flask, Python OOPs, HTML and Tailwind CSS.
 
 # UI Preview
 
 <img src = "LandingPage.png">
+<img src = "ExistingChats.png">
